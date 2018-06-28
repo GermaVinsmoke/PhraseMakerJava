@@ -1,4 +1,4 @@
-Genetic Algorithm Implementatio in Java
+Genetic Algorithm Implementation in Java
 
 A Phrase Maker program which works on Genetic Algorithm
 
