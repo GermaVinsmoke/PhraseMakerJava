@@ -7,7 +7,7 @@ public class DNA extends SettingUp {
 	Random rand = new Random();
 	char[] genes;
 	float fitness;
-
+	int highestScore = 0;
 //	DNA(int num) {
 //		genes = new char[num];
 //		for (int i = 0; i < genes.length; i++) {
@@ -53,12 +53,16 @@ public class DNA extends SettingUp {
 //				System.out.println("Yes");
 				score++;
 			}
+			if(score > highestScore){
+				highestScore = score;
+			}
 		}
+//		System.out.println(highestScore);
 //		System.out.println(score);
 //		fitness = (float) score / (float) target.length();
 		// fitnessScore.add(score);
 //		if(score> Population.bestScore/2)
-			fitnessScore.put(score, String.valueOf(genes));
+		fitnessScore.put(score, String.valueOf(genes));
 //		if(score == genes.length){
 ////			System.out.println(score);
 //			return genes.length;
@@ -66,6 +70,16 @@ public class DNA extends SettingUp {
 //			return 0;
 //		}
 		return score;
+	}
+	
+	public void display() throws InterruptedException{
+		for(Map.Entry m : fitnessScore.entrySet()){
+			if(m.getKey().equals(highestScore)){
+//				System.out.println(m.getValue());
+				PhraseGui.display.setText(String.valueOf(m.getValue()));
+				Thread.sleep(100);
+			}
+		}
 	}
 
 	public void matingPoolGenerate() {
@@ -113,8 +127,12 @@ public class DNA extends SettingUp {
 		}
 //		System.out.println(String.valueOf(genes));
 //		return String.valueOf(genes);
+		
 		String child = new String(genes);
 //		System.out.println(child);
+//		if(child == target){
+//			Population.isFinished = true;
+//		}
 		return child;
 	}
 

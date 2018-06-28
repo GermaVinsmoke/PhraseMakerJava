@@ -10,14 +10,14 @@ class Population{
 	float mutationRate;
 	//DNA[] population;
 	String[] pop; //
-	boolean isFinished = false;
-	static int bestScore = 0;
+	static boolean isFinished = false;
+	int bestScore = 0;
 	int isItTheBest = 0;
 	int generations = 0;
 	DNA d = new DNA();
 	Random rand = new Random();
 
-	public Population(String target, int popmax, float mutationRate){
+	public Population(String target, int popmax, float mutationRate) throws InterruptedException{
 		this.target = target;
 		this.popmax = popmax;
 		this.mutationRate = mutationRate;
@@ -38,7 +38,7 @@ class Population{
 //		System.out.println("From calcFitnessFunction");
 		for (int i = 0; i < pop.length; i++) {
 			isItTheBest = d.fitness(target, pop[i]);
-			System.out.println(isItTheBest);
+//			System.out.println(isItTheBest);
 			if(isItTheBest == bestScore){
 				isFinished = true;
 				break;
@@ -75,7 +75,7 @@ class Population{
 		generations++;
 		getBest();
 	}*/
-	public void GeneticAlgo(){
+	public void GeneticAlgo() throws InterruptedException{
 		while(!(isFinished)){
 			calcFitness();
 //			if(isItTheBest == bestScore){
@@ -89,7 +89,9 @@ class Population{
 //				System.out.println(pop[i]);
 			}
 			generations++;
-			System.out.println("Generations: "+generations);
+//			System.out.println("Generations: "+generations);
+			PhraseGui.genValue.setText(String.valueOf(generations));
+			d.display();
 			if(isItTheBest == bestScore){
 //				isFinished = true;
 				break;
