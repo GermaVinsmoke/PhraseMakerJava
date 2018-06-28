@@ -50,7 +50,7 @@ public class PhraseGui extends JFrame{
 		mutValue.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
 		jf.add(jp4);
 		
-		jf.setSize(500,400);
+		jf.setSize(640,480);
 		jf.setDefaultCloseOperation(EXIT_ON_CLOSE);	
 		setResizable(false);
 		jf.setLocationRelativeTo(null);
