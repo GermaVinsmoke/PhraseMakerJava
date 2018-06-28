@@ -2,6 +2,8 @@ package geneticJava;
 
 import java.util.*;
 
+import com.sun.org.apache.xalan.internal.xsltc.dom.MatchingIterator;
+
 class Population{
 	String target;
 	int popmax;
@@ -9,7 +11,7 @@ class Population{
 	//DNA[] population;
 	String[] pop; //
 	boolean isFinished = false;
-	int bestScore = 0;
+	static int bestScore = 0;
 	int isItTheBest = 0;
 	int generations = 0;
 	DNA d = new DNA();
@@ -36,7 +38,16 @@ class Population{
 //		System.out.println("From calcFitnessFunction");
 		for (int i = 0; i < pop.length; i++) {
 			isItTheBest = d.fitness(target, pop[i]);
-//			System.out.println(isItTheBest);
+			System.out.println(isItTheBest);
+			if(isItTheBest == bestScore){
+				isFinished = true;
+				break;
+			}
+//			if(generations%3 == 0){
+//				if(isItTheBest == 1 || isItTheBest == 2){
+//					pop[i] = d.generatePopulation(target.length());
+//				}
+//			}
 		}
 	}
 
@@ -74,8 +85,8 @@ class Population{
 			d.matingPoolGenerate();
 			for(int i = 0; i < pop.length; i++){
 				String child = d.crossover();
-				pop[i] = d.mutation(mutationRate, child);
-				System.out.println(pop[i]);
+				pop[i] = d.mutation(mutationRate, child, target);
+//				System.out.println(pop[i]);
 			}
 			generations++;
 			System.out.println("Generations: "+generations);

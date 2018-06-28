@@ -33,10 +33,10 @@ public class DNA extends SettingUp {
 	private char newChar() {
 		// TODO Auto-generated method stub
 		int c = 65 + rand.nextInt(59);
-		/*if (c == 63)
+		if (c == 123)
 			c = 32;
-		if (c == 64)
-			c = 46;*/
+		if (c == 124)
+			c = 46;
 		return (char) c;
 	}
 
@@ -57,13 +57,15 @@ public class DNA extends SettingUp {
 //		System.out.println(score);
 //		fitness = (float) score / (float) target.length();
 		// fitnessScore.add(score);
-		fitnessScore.put(score, String.valueOf(genes));
-		if(score == genes.length){
-//			System.out.println(score);
-			return genes.length;
-		}else{
-			return 0;
-		}
+//		if(score> Population.bestScore/2)
+			fitnessScore.put(score, String.valueOf(genes));
+//		if(score == genes.length){
+////			System.out.println(score);
+//			return genes.length;
+//		}else{
+//			return 0;
+//		}
+		return score;
 	}
 
 	public void matingPoolGenerate() {
@@ -98,15 +100,22 @@ public class DNA extends SettingUp {
 //	    return child;
 //	  }
 	
-	public String mutation(float mutationRate, String chromosome) {
+	public String mutation(float mutationRate, String chromosome, String target) {
 		char [] genes = chromosome.toCharArray();
 		for (int i = 0; i < genes.length; i++) {
 			if(Math.random()<mutationRate){
-				this.genes[i]=newChar();
+				if(genes[i] != target.charAt(i)){
+					genes[i]=newChar();
+//					System.out.println(genes[i]);
+//					System.out.println(this.genes[i]);
+				}
 			}
 		}
 //		System.out.println(String.valueOf(genes));
-		return String.valueOf(genes);
+//		return String.valueOf(genes);
+		String child = new String(genes);
+//		System.out.println(child);
+		return child;
 	}
 
 //	void display() {
