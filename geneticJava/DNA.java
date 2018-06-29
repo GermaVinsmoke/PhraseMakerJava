@@ -91,9 +91,10 @@ public class DNA extends SettingUp {
 		char [] genes = chromosome.toCharArray();
 		for (int i = 0; i < genes.length; i++) {
 			if(Math.random()<mutationRate){
-				if(genes[i] != target.charAt(i)){	//If the characters don't match then get a new character
+			
+			//Use this line to speed up the process	
+//				if(genes[i] != target.charAt(i))	//If the characters don't match then get a new character
 					genes[i]=newChar();
-				}
 			}
 		}
 		String child = new String(genes); //Stores the child phrase after mutation
