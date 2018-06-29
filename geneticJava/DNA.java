@@ -90,10 +90,8 @@ public class DNA extends SettingUp {
 	public String mutation(float mutationRate, String chromosome, String target) {
 		char [] genes = chromosome.toCharArray();
 		for (int i = 0; i < genes.length; i++) {
-			if(Math.random()<mutationRate){
-			
-			//Use this line to speed up the process	
-//				if(genes[i] != target.charAt(i))	//If the characters don't match then get a new character
+			if(Math.random()<mutationRate){	
+				if(genes[i] != target.charAt(i))	//If the characters don't match then get a new character
 					genes[i]=newChar();
 			}
 		}

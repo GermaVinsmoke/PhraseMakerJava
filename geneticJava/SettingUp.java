@@ -22,10 +22,10 @@ public class SettingUp {
 		String target = "Genetic Algorithm implementation";
 		
 		//Population for the algorithm
- 		int popmax = 20000;
+ 		int popmax = 200;
  		
  		//MutationRate for the algorithm
-		float mutationRate =  0.1f;
+		float mutationRate =  0.5f;
 		
 		//Setting the population value on Label for GUI
 		PhraseGui.popValue.setText(String.valueOf(popmax));
